@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
 
     else
       flash[:notice] = "予約に成功しました"
-      redirect_to users_path
+      redirect_to "/"
     end
   end
 
@@ -24,6 +24,11 @@ class ReservationsController < ApplicationController
   def update
   end
 
+  def reserved_rooms
+    @user = current_user
+    @reservations =  Reservation.where(user_id: current_user.id)
+  end
+
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
@@ -33,13 +38,12 @@ class ReservationsController < ApplicationController
 
   def confirm
     # binding.pry
-    @current_user = User.find(params[:current_user_id])
+    @user = current_user
     @reservation = Reservation.new(confirm_params)
     @room = Room.find(params[:id])
   end
 
   private
-
   def confirm_params
   params.permit(:user_id, :room_id, :room_name, :charge, :start_date, :end_date, :people, :avatar, :current_user_id, :id)#時間の計算をするために必要
   end

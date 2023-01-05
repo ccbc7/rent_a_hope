@@ -1,4 +1,4 @@
-<h1>Rooms#new 新規ルーム登録画面</h1>
+<h3>新規ルーム登録</h3>
 <%= flash[:notice] %>
   <%= form_with model: @room, local: true do |r| %>
     <table>
@@ -15,7 +15,7 @@
           <%= r.label :address ,"場所" %>
         </th>
         <td>
-          <%= r.text_field :address %>
+          <%= r.text_area :address %>
         </td>
       </tr>
       <tr>

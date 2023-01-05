@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :set_q, only: [:index, :search] #ransack用
   def index
     @rooms = Room.all
     @user = current_user
@@ -24,10 +25,10 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @user = current_user#ログイン中ユーザー取得
     @reservation = Reservation.new
     @room = Room.find(params[:id])
-    @user = User.find(@room.user_id)#ルーム登録時に紐づけた登録者のuser_idからユーザー名を検索
-    @current_user = User.find(params[:format])#ログイン中ユーザー取得
+    @regist_user = User.find(@room.user_id)#ルーム登録時に紐づけた登録者のuser_idからユーザー名を検索
   end
 
   def edit
@@ -43,9 +44,23 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def registered_rooms
+    @user = current_user
+    @rooms = @user.rooms
+  end
+
+  def search #ransack用
+    @results = @q.result
+  end
+
   private
   def room_params
     params.require(:room).permit(:room_name, :charge, :user_id, :address, :room_introduction, :avatar)
   # binding.pry
   end
+
+  def set_q #ransack用
+    @q = User.ransack(params[:q])
+  end
+
 end

@@ -4,13 +4,13 @@
   <tr>
     <th>ID</th>
     <td>
-      <%= @current_user.id %>
+      <%= current_user.id %>
     </td>
   </tr>
   <tr>
     <th>名前</th>
     <td>
-      <%= @current_user.user_name %>
+      <%= current_user.username %>
     </td>
   </tr>
 </table>
@@ -30,7 +30,7 @@
         <%= f.label :user_name ,"投稿者名" %>
       </th>
       <td>
-        <%= @user.user_name %>
+        <%= @regist_user.username %>
       </td>
     </tr>
     <tr>
@@ -96,7 +96,6 @@
     </tr>
   </table>
       <%= f.submit "確認画面へ" %>
-      <%= f.hidden_field :current_user_id, value: @current_user.id %>
       <%= f.hidden_field :charge, value: @room.charge %>
       <%= f.hidden_field :room_name, value: @room.room_name %>
       <%= f.hidden_field :avatar, value: @room.avatar
