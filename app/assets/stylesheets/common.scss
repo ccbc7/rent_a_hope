@@ -1,0 +1,286 @@
+header {
+  background-color: rgb(40, 170, 182);
+  height: 64px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.header-logo {
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-size: 22px;
+  line-height: 64px;
+}
+
+.header-logo a {
+  color: white;
+  font-size: 22px;
+  border: solid;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.header-menus {
+  float: right;
+}
+
+.header-menus li {
+  cursor: pointer;
+  float: left;
+  line-height: 64px;
+  font-size: 13px;
+  color: white;
+  padding-left: 15px;
+  z-index: 5;
+
+  &:hover ul.sub-list {
+    display: block;
+    z-index: 5;
+  }
+}
+
+.header-menus a {
+  float: left;
+  font-size: 15px;
+  color: white;
+  margin-right: 5px;
+  /* border-radius: 20px;
+  border:solid */
+}
+
+.header-menus .fa {
+  padding-right: 5px;
+}
+
+.header-menus input[type="submit"] {
+  padding: 0 20px;
+  float: left;
+  line-height: 64px;
+  color: white;
+  margin: 0;
+  font-size: 13px;
+}
+
+/* フラッシュ ================================ */
+.message {
+  color: white;
+  background: rgb(38, 95, 201);
+  text-align: center;
+  position: relative;
+  top: 64px;
+  z-index: 0;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 3px;
+}
+
+img.ziro {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
+img.one {
+  border-radius: 50%;
+    width: 200px;
+      height: 200px;
+}
+
+td {
+  // border: solid 1px;
+  // border-color: #a6a6a6;
+  border-radius: 3%;
+  padding-left: 3px;
+
+}
+
+.profile_img {
+  text-align: center;
+}
+
+image_tag {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
+ul.sub-list {
+  position: absolute;
+  top: 50px;
+  z-index: 5;
+  display: none;
+  li {
+    background-color: #4d77b6;
+    width: 200px;
+    opacity: 80%;
+    z-index: 5;
+  }
+}
+
+.box-email input {
+    border-style: none;
+      box-sizing: border-box;
+      width: 300px;
+      height: 31px;
+      border: 1px solid #a6a6a6;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+      border-radius: 3px;
+      padding: 0 7px;
+}
+
+.box-introduction textarea {
+  border-style: none;
+    box-sizing: border-box;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #a6a6a6;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+    border-radius: 3px;
+    padding: 0 7px;
+}
+.box h2 {
+  text-align: center;
+}
+
+
+.show_room table th {
+  background-color: #bfe9c4;
+  padding: 10px 20px;
+  text-align: center;
+
+}
+
+.show_room table td {
+  background-color: #cbe7d7;
+  padding: 10px 20px;
+  word-wrap: break-word;
+  max-width: 300px;
+}
+
+.room_introduction table td {
+  text-align: left;
+}
+
+.box_1,.box_2,.box_3 {
+  border: solid;
+  background-color: darkorange;
+}
+.boxes {
+  display: flex;
+}
+
+img.index_room_image {
+  width: 245px;
+  max-height: 140px;
+  text-align: center;
+}
+img.edit_room_image {
+  width: 500px;
+  max-height: 285px;
+  text-align: center;
+}
+img.confirm_room_image {
+  width: 100px;
+  max-height: 57px;
+  text-align: center;
+}
+
+
+
+
+.sample_box {
+  margin: 5px;
+  border: solid;
+  border-color: #a6a6a6;
+  border-radius: 10px;
+  width: 270px;
+  height: 300px;
+  box-shadow: 0px 1px 3px 1px #999;
+  padding: 10px;
+  .room_image {
+    text-align: center;
+    padding: 0;
+  }
+  .room_name {
+    text-align: left;
+    font-weight: bold;
+    color: #999;
+
+  }
+  .charge {
+    text-align: right;
+  }
+  .address {
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.outer_box {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  // border: solid;
+  // border-color: blueviolet;
+  width: 100%;
+  justify-content: center;
+}
+
+.result {
+  margin-left: 10px;
+  z-index: 2;
+}
+
+.search-outer-box {
+  position: relative;
+  top: -100px;
+  .search-box {
+    background-color: white;
+    border-radius: 3px;
+    width: 400px;
+    height: 30px;
+    opacity: 60%;
+  }
+  .search-submit {
+    height: 30px;
+    border: solid;
+    border-color: gainsboro;
+    color: white;
+    background-color: rgb(40, 170, 182);
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+  }
+}
+
+.search-outer-box2 {
+  .search-box {
+      background-color: white;
+      border-radius: 5px;
+      width: 200px;
+      height: 30px;
+      opacity: 60%;
+    }
+    .search-submit {
+      border: solid;
+      border-color: gainsboro;
+      color: white;
+      background-color: rgb(40, 170, 182);
+      border-radius: 3px;
+    }
+}
+
+.edit-room-introduction th {
+  max-width: 500px;
+}
+
+
+.reservation_table {
+  text-align: center;
+  background-color: antiquewhite;
+}

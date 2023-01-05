@@ -1,3 +1,26 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "home#top"
+  get 'home/top'
+  resources :home
+  devise_for :users
+  resources :users
+
+  resources :application do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :rooms do
+    collection do
+      get "registered_rooms"
+    end
+  end
+
+  resources :reservations do
+      member do
+        post :confirm
+      end
+    end
+
 end
