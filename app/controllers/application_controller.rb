@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_q
+  before_action :set_q #ransack用
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-    # @user = current_user
+  def search #ransack用
+    @results = @q.result
+  end
+
+
 
 
   protected
@@ -22,16 +26,13 @@ class ApplicationController < ActionController::Base
     user_path(resource.id)
   end
 
-  # ----ransack---
-  def search
-    if @q.result.present?
-      @results = @q.result
-    end
-  end
 
-  def set_q
+
+
+  def set_q #ransack用
     @q = Room.ransack(params[:q])
   end
+
 
 
 end

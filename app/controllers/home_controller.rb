@@ -36,16 +36,11 @@ class HomeController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result #ransack用
+    @user = current_user
   end
 
 
   private
-  def set_q
-    @q = Room.ransack(params[:q])
-  end
-
-  # def room_params
-  #   params.permit(:room_name, :charge, :start_day, :end_day, :charge)
-  # end
+#ransackはapplicationコントローラに記述
 end

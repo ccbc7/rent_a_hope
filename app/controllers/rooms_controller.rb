@@ -50,6 +50,8 @@ class RoomsController < ApplicationController
   end
 
   def search #ransack用
+    @rooms = Room.all
+    @user = current_user
     @results = @q.result
   end
 
