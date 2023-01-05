@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   get 'home/top'
   resources :home
   devise_for :users
-  resources :users
+  resources :users do
+  collection do
+      get :user_to_all_rooms
+      get :reserved_rooms
+    end
+  end
 
   resources :application do
     collection do
@@ -12,15 +17,12 @@ Rails.application.routes.draw do
   end
 
   resources :rooms do
-    collection do
-      get "registered_rooms"
-    end
   end
 
   resources :reservations do
-      member do
-        post :confirm
-      end
+    member do
+      post :confirm
     end
+  end
 
 end

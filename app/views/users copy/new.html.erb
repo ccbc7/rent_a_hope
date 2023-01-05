@@ -1,0 +1,14 @@
+<h1>ユーザー新規登録画面</h1>
+<%= form_with model: @user, local: true do |u| %>
+  <table>
+    <tr>
+      <th>
+        <%= u.label :user_name ,"ユーザー名" %>
+      </th>
+      <td>
+        <%= u.text_field :user_name %>
+      </td>
+    </tr>
+  </table>
+  <%= u.submit "登録完了する" %>
+    <% end %>

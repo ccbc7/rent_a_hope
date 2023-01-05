@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @q = Room.ransack(params[:q])
+    @room = Room.new
   end
 
   def edit

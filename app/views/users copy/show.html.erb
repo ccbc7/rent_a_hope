@@ -34,13 +34,17 @@
           <%= r.text_field :charge %>
         </td>
       </tr>
-      <th>
-        <%= r.label :avatar, "ルーム画像" %>
-      </th>
-      <td>
-        <%= r.file_field :avatar %>
-      </td>
+        <th>
+          <%= r.label :avatar, "ルーム画像" %>
+        </th>
+        <td>
+          <%= r.file_field :avatar %>
+        </td>
     </table>
-    <%= r.hidden_field :user_id, value: current_user.id %>
-      <%= r.submit "登録完了する" %>
-        <% end %>
+      <%= r.hidden_field :user_id, value: @user.id %>
+        <%= r.submit "登録完了する" %>
+          <% end %>
+        <% if @room.avatar? %>
+            <strong>Avatar:</strong>
+            <%= image_tag @room.avatar.url %>
+          <% end %>

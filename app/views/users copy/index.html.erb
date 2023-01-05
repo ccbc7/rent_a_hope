@@ -1,0 +1,162 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+<p>-----------------------------------------------------------------</p>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+<p>
+  <%= link_to "ユーザー登録" , new_user_path %>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>ルーム登録</th>
+      <th>ルーム予約</th>
+      <th>ユーザー詳細(show)</th>
+      <th>予約済みルーム</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+      <tr>
+        <td>
+          <%= u.id %>
+        </td>
+        <td>
+          <%= u.user_name %>
+        </td>
+        <td>
+          <%= link_to "ルーム登録", user_path(u)%>
+        </td>
+        <td>
+          <%= link_to "ルーム予約",  user_to_all_rooms_users_path(u.id) %>
+        </td>
+        <td>
+          <%= link_to "ユーザー詳細" , user_path(u) %>
+        </td>
+        <td>
+          <%= link_to "予約済みルーム" , reserved_rooms_users_path(u) %>
+        </td>
+        <td>
+          <%= link_to "削除" , u, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<p>------------------------------------リレーション---------------------------------------------</p>
+<h3>ルーム一覧</h3>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>ルーム画像</th>
+      <th>ルームネーム</th>
+      <th>場所</th>
+      <th>ルーム紹介</th>
+      <th>料金</th>
+      <th>登録者ID</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |r| %>
+      <tr>
+        <td>
+          <%= r.id %>
+        </td>
+        <td>
+        <% if r.avatar? %>
+          <%= image_tag r.avatar.url,class: "room_image" %>
+            <% end %>
+        </td>
+        <td>
+          <%= r.room_name %>
+        </td>
+        <td>
+          <%= r.address %>
+        </td>
+        <td>
+          <%= r.room_introduction %>
+        </td>
+        <td>
+          <%= r.charge %>円/日
+        </td>
+        <td>
+          <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<p>---------------------------------------------------------------------------------</p>
+<h3>予約済みルーム</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ルーム画像</th>
+      <th>ルームネーム</th>
+      <th>ルームID</th>
+      <th>料金/日</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>人数</th>
+      <th>合計料金</th>
+      <th>予約者ID</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |r| %>
+      <tr>
+        <td>
+          <%= link_to r.id, user_to_all_rooms_users_path(r.user_id) %>
+        </td>
+        <td>
+          <% if r.avatar? %>
+            <%= image_tag r.avatar, class: "room_image" %>
+          <% end %>
+        </td>
+        <td>
+          <%= r.room_id %>
+        </td>
+        <td>
+          <%= r.room_name %>
+        </td>
+        <td>
+          <%= r.charge %>
+        </td>
+        <td>
+          <%= r.start_date.to_s(:datetime_jp) %>
+        </td>
+        <td>
+          <%= r.end_date.to_s(:datetime_jp) %>
+        </td>
+        <td>
+          <%= r.people %>
+        </td>
+        <td>
+          <% sub_price = r.charge * r.people %>
+            <% total_day=((r.end_date - r.start_date)/3600/24+1).floor %>
+              <% total_price=sub_price * total_day %>
+                <%= total_price %>円
+        </td>
+        <td>
+          <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>

@@ -1,0 +1,52 @@
+<h3>予約済みルーム</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ルームネーム</th>
+      <th>料金/日</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>人数</th>
+      <th>合計料金</th>
+      <th>予約者ID</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |r| %>
+      <tr>
+        <td>
+          <%= r.id %>
+        </td>
+        <td>
+          <%= r.room_name %>
+        </td>
+        <td>
+          <%= r.charge %>
+        </td>
+        <td>
+          <%= r.start_date.to_s(:datetime_jp) %>
+        </td>
+        <td>
+          <%= r.end_date.to_s(:datetime_jp) %>
+        </td>
+        <td>
+          <%= r.people %>
+        </td>
+        <td>
+          <% sub_price=r.charge * r.people %>
+            <% total_day=((r.end_date - r.start_date)/3600/24+1).floor %>
+              <% total_price=sub_price * total_day %>
+                <%= total_price %>円
+        </td>
+        <td>
+          <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>

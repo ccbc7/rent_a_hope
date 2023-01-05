@@ -284,3 +284,19 @@ img.confirm_room_image {
   text-align: center;
   background-color: antiquewhite;
 }
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border-bottom: 1px #000000 solid;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+.room_image {
+  max-width: 80px;
+}

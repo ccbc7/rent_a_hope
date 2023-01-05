@@ -1,15 +1,26 @@
-<h1>Rooms#index</h1>
-<h3>ルーム一覧</h3>
+<h3>この部屋を予約しようとしているユーザー</h3>
 <table>
+  <tr>
+    <th>ID</th>
+    <td>
+      <%= params[:format] %>
+    </td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td>
+      <%= @current_user.user_name %>
+    </td>
+  </tr>
+  <table>
+  <h3>ルーム一覧</h3>
   <thead>
     <tr>
       <th>id</th>
-      <th>ルーム画像</th>
       <th>ルームネーム</th>
-      <th>場所</th>
-      <th>ルーム紹介</th>
       <th>料金</th>
-      <th>登録者ID</th>
+      <th>投稿者ID</th>
+      <th>予約(show)</th>
       <th>削除</th>
     </tr>
   </thead>
@@ -21,24 +32,16 @@
           <%= r.id %>
         </td>
         <td>
-          <% if r.avatar? %>
-            <%= image_tag r.avatar.url,class: "room_image" %>
-              <% end %>
-        </td>
-        <td>
           <%= r.room_name %>
         </td>
         <td>
-          <%= r.address %>
-        </td>
-        <td>
-          <%= r.room_introduction %>
-        </td>
-        <td>
-          <%= r.charge %>円/日
+          <%= r.charge %>
         </td>
         <td>
           <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "予約する" , room_path(r,@current_user) %>
         </td>
         <td>
           <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
