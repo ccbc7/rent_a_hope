@@ -1,0 +1,96 @@
+<h1>
+  edit_confirm
+</h1>
+<%= render "devise/shared/error" , obj: @reservation %>
+  <div class="box">
+    <div class="box-inner">
+      <h3 style="text-align: center;">確認フォーム</h3>
+
+    <%= form_with model: @reservation, url: reservation_path,local: true do |f| %>
+      <% if @room.room_image.attached? %>
+      <div class="room_image">
+        <%= image_tag @room.room_image , class:"edit_room_image"%>
+      </div>
+      <% end %>
+      <table>
+        <tr>
+          <th>ルーム名</th>
+          <td>
+            <%= @room.room_name%>
+          </td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>
+            <%= @room.adress %>
+          </td>
+        </tr>
+        <tr>
+          <th>値段</th>
+          <td>
+            <%= @room.charge %>/日
+          </td>
+        </tr>
+        <tr>
+          <th>ルーム紹介</th>
+          <td>
+            <div class="edit-room-introduction">
+              <%= @room.room_introduction %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+            <%= f.label :start_day ,"開始日" %>
+          </th>
+          <td>
+              <%= @room.start_day.to_s(:datetime_jp) %>
+          </td>
+              </tr>
+
+              <tr>
+                <th>
+                  <%= f.label :end_day ,"終了日" %>
+                </th>
+                <td>
+                  <%= @room.end_day.to_s(:datetime_jp) %>
+                </td>
+              </tr>
+
+              <tr>
+                <th>
+                  <%= f.label :people ,"人数" %>
+                </th>
+                <td>
+                  <%= @room.people %>人
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.label :total_price ,"合計料金" %>
+                </th>
+                <td>
+                  <%= @room.total_price.floor %>円
+                </td>
+              </tr>
+            </table>
+
+            <p>
+              <%= f.hidden_field :room_name %>
+              <%= f.hidden_field :start_day %>
+              <%= f.hidden_field :end_day %>
+              <%= f.hidden_field :people %>
+              <%= f.hidden_field :charge %>
+              <%= f.hidden_field :id %>
+            </p>
+          </div>
+
+          <p style="text-align: center;">
+            <%= link_to "Top" , "/" %>
+            <%= f.submit "予約する" %>
+            <%= f.submit "修正する" , name: "back" %>
+          </p>
+          <% end %>
+
+  </div>

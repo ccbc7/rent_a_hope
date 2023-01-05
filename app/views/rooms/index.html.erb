@@ -1,0 +1,23 @@
+<h3 class="result">登録件数：<%= @all_rooms.all.count(:id) %>件</h3>
+<div class="outer_box">
+  <% @all_rooms.each do |r| %>
+    
+    <div class="sample_box">
+      <% if r.room_image.attached? %>
+        <div class="room_image">
+          <%= image_tag r.room_image , class:"index_room_image"%>
+        </div>
+        <% end %>
+
+          <li class="room_name">
+            <%= r.room_name %>
+          </li>
+          <li class="address">
+            <%= r.adress %>
+          </li>
+          <li class="charge">
+            ¥<%= r.charge %>
+          </li>
+    </div>
+    <% end %>
+</div>
