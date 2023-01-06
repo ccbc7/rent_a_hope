@@ -1,12 +1,46 @@
 
+<body>
 <div class="main top-main">
   <div class="top-message">
     <h2>まだ体験したことのない旅をしよう</h2>
   </div>
-<%= search_form_for @q, url: search_home_index_path do |f| %>
-<div class="search-outer-box">
-  <%= f.search_field :room_name_or_address_cont, class: "search-box" , placeholder:"東京" %>
-  <%= f.submit "検索", class: "search-submit" %>
 </div>
-<% end %>
+
+<div class="over_city_container">
+    <h1 class="osusume_area">おすすめエリア</h1>
+  <div class="outer_city_container" >
+    <%= link_to search_home_index_path(q: {address_cont: "東京" }) do %>
+    <div class="city_container_tokyo">
+      <span>東京</span>
+    </div>
+    <% end %>
+
+    <%= link_to search_home_index_path(q: {address_cont: "京都" }) do %>
+    <div class="city_container_kyoto">
+      <span>京都</span>
+    </div>
+    <% end %>
+
+    <%= link_to search_home_index_path(q: {address_cont: "大阪" }) do %>
+    <div class="city_container_osaka">
+      <span>大阪</span>
+    </div>
+    <% end %>
+
+    <%= link_to search_home_index_path(q: {address_cont: "札幌" }) do %>
+    <div class="city_container_sapporo">
+      <span>札幌</span>
+    </div>
+    <% end %>
+  </div>
 </div>
+<br>
+<div class="all_search_box">
+  <%= search_form_for @q, url: search_home_index_path do |f| %>
+    <div class="search-outer-box">
+      <%= f.search_field :room_name_or_address_cont, class: "search-box" , placeholder:"東京" %>
+        <%= f.submit "検索" , class: "search-submit" %>
+    </div>
+    <% end %>
+      </body>
+</body>

@@ -246,33 +246,25 @@ img.confirm_room_image {
     height: 30px;
     opacity: 60%;
   }
-  .search-submit {
-    height: 30px;
-    border: solid;
-    border-color: gainsboro;
-    color: white;
-    background-color: rgb(40, 170, 182);
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 3px;
-  }
+}
+.search-submit {
+  height: 30px;
+  width: 40px;
+  border: solid;
+  border-color: gainsboro;
+  color: white;
+  background-color: rgb(40, 170, 182);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 3px;
 }
 
-.search-outer-box2 {
-  .search-box {
-      background-color: white;
-      border-radius: 5px;
-      width: 200px;
-      height: 30px;
-      opacity: 60%;
-    }
-    .search-submit {
-      border: solid;
-      border-color: gainsboro;
-      color: white;
-      background-color: rgb(40, 170, 182);
-      border-radius: 3px;
-    }
+.search-box {
+  background-color: white;
+  border-radius: 3px;
+  width: 400px;
+  height: 30px;
+  opacity: 60%;
 }
 
 .edit-room-introduction th {
@@ -292,6 +284,8 @@ td {
   border-bottom: 1px #000000 solid;
 }
 
+
+
 th,
 td {
   text-align: center;
@@ -299,4 +293,80 @@ td {
 
 .room_image {
   max-width: 80px;
+}
+.osusume_area {
+  // text-align: center;
+  padding-top: 15px;
+  padding-left: 3px;
+}
+
+.over_city_container {
+  position: relative;
+  top: 670px;
+  padding-bottom: 30px;
+}
+.outer_city_container{
+  z-index: -5;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    span {
+        color: whitesmoke;
+        padding-left: 3px;
+        font-size: 30px;
+        // text-stroke: 1px red;
+        font-weight: bold;
+        -webkit-text-stroke: 1px black;
+      }
+}
+.city_container_tokyo {
+  width: 270px;
+  height: calc(270px * 1.618);
+  border-radius: 10px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+  margin: 3px;
+  background-image:url("/tokyo.jpg");
+  background-size:cover;
+  background-position: center;
+}
+
+.city_container_kyoto {
+  width: 270px;
+  height: calc(270px * 1.618);
+  border-radius: 10px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+  margin: 3px;
+  background-image:url("/kyoto.jpg");
+  background-size:cover;
+  background-position: center;
+}
+.city_container_osaka {
+  width: 270px;
+  height: calc(270px * 1.618);
+  border-radius: 10px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+  margin: 3px;
+  background-image:url("/osaka.jpg");
+  background-size:cover;
+  background-position: center;
+}
+.city_container_sapporo {
+  width: 270px;
+  height: calc(270px * 1.618);
+  border-radius: 10px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .07) inset;
+  margin: 3px;
+  background-image:url("/sapporo.jpg");
+  background-size:cover;
+  background-position: center;
+}
+
+.all_search_box {
+  position: relative;
+  text-align: center;
+  top: -250px;
 }

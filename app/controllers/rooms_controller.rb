@@ -14,11 +14,10 @@ class RoomsController < ApplicationController
     @user = current_user
     @room = Room.new(room_params)
     # @user = User.find(params[:id])
-    if @room.save
+    if @room.valid?(:create) && @room.save #バリデーション:create発動
       flash[:notice] = "ルームを登録しました"
-      redirect_to "/"
-    elsif @room.save!
-      binding.pry
+      redirect_to registered_rooms_rooms_path
+    else
       flash[:notice] = "ルームを登録できませんでした"
       render new_room_path
     end

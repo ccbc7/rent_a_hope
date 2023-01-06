@@ -1,7 +1,22 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  # mount_uploader :avatar, AvatarUploader
+
+
+  with_options on: :create do
+    validates :people,  presence: true
+    validates :charge,  presence: true
+  end
+
+  def start_end_check
+      unless
+      self.start_date && self.end_date &&
+      self.start_date < self.end_date
+      errors.add(:endday, "は開始日より前の日付は登録できません。")
+      end
+  end
+  validate :start_end_check
+
 
   def total_price
     charge * people

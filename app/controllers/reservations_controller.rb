@@ -8,10 +8,9 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if params[:back] || !@reservation.save
-
     else
       flash[:notice] = "予約に成功しました"
-      redirect_to "/"
+      redirect_to reserved_rooms_reservations_path
     end
   end
 

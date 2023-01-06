@@ -1,4 +1,5 @@
 <h1>予約確認画面</h1>
+<%= render "devise/shared/error" , obj: @reservation %>
 <h3>この部屋を予約しようとしているユーザー</h3>
 <table>
   <tr>
@@ -54,10 +55,12 @@
   <tr>
     <th>合計料金:</th>
     <td>
-      <% sub_price = @reservation.charge * @reservation.people %>
-      <% total_day = ((@reservation.end_date - @reservation.start_date)/3600/24+1).floor %>
-        <% total_price = sub_price * total_day %>
-        <%= total_price %>円
+      <% if @reservation.charge && @reservation.people %>
+        <% sub_price = @reservation.charge * @reservation.people %>
+        <% total_day = ((@reservation.end_date - @reservation.start_date)/3600/24+1).floor %>
+          <% total_price = sub_price * total_day %>
+          <%= total_price %>円
+      <% end %>
     </td>
   </tr>
 </table>
