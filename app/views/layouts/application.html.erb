@@ -37,10 +37,10 @@
 
             <ul class="sub-list">
               <li class="sub"><%= link_to "ルーム登録",new_room_path %></li><br>
+              <li><%= link_to "ルーム予約", rooms_path %></li>
               <li class="sub"><%= link_to "予約済みルーム一覧" , reserved_rooms_reservations_path %></li><br>
               <li class="sub"><%= link_to "登録済みルーム一覧", registered_rooms_rooms_path %></li><br>
               <li><%= link_to "ユーザー情報", "/users/:id"%></li>
-              <li><%= link_to "全てのルーム", rooms_path %></li>
               <li><%= link_to "ログアウト" , "/users/sign_out" , method: :delete %></li>
             </ul>
           </li>

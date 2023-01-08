@@ -3,25 +3,23 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    if @reservation.valid?
+    end
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-    if params[:back] || !@reservation.save
-    else
-      flash[:notice] = "予約に成功しました"
+    @user = current_user
+    if !@reservation.valid? && !@reservation.save
+      @room = @reservation.room
+      render :confirm
+    elsif
+      @reservation.save
+      flash[:notice] = "#{@reservation.room_name}の予約に成功しました"
       redirect_to reserved_rooms_reservations_path
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
 
   def reserved_rooms
     @user = current_user
@@ -32,11 +30,10 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     flash[:notice] = "予約を削除しました"
-    redirect_to users_path
+    redirect_to reserved_rooms_reservations_path
   end
 
   def confirm
-    # binding.pry
     @user = current_user
     @reservation = Reservation.new(confirm_params)
     @room = Room.find(params[:id])

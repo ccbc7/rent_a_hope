@@ -31,6 +31,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -57,7 +58,6 @@ class RoomsController < ApplicationController
   private
   def room_params
     params.require(:room).permit(:room_name, :charge, :user_id, :address, :room_introduction, :avatar)
-  # binding.pry
   end
 
   def set_q #ransack用

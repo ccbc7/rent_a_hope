@@ -63,6 +63,15 @@
     </tr>
     <tr>
       <th>
+        <%= f.label :room_introduction ,"ルーム紹介" %>
+      </th>
+      <td>
+        <%=  @room.room_introduction %>
+          <!-- ビューに表示されるが編集不可 -->
+      </td>
+    </tr>
+    <tr>
+      <th>
         <%= f.label :charge ,"料金" %>
       </th>
       <td>
@@ -95,7 +104,7 @@
       </td>
     </tr>
   </table>
-      <%= f.submit "確認画面へ" %>
+      <button><%= f.submit "確認画面へ" %></button>
       <%= f.hidden_field :charge, value: @room.charge %>
       <%= f.hidden_field :room_name, value: @room.room_name %>
       <%= f.hidden_field :avatar, value: @room.avatar

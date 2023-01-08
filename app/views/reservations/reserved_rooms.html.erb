@@ -7,6 +7,7 @@
       <th>ルームID</th>
       <th>ルームネーム</th>
       <th>料金/日</th>
+      <th>予約日</th>
       <th>開始日</th>
       <th>終了日</th>
       <th>人数</th>
@@ -20,12 +21,12 @@
     <% @reservations.each do |r| %>
       <tr>
         <td>
-          <%= link_to r.id, user_to_all_rooms_users_path(r.user_id) %>
+          <%= link_to r.id, room_path(r.room_id) %>
         </td>
         <td>
           <% if r.avatar? %>
-            <%= image_tag r.avatar, class: "room_image" %>
-              <% end %>
+              <%= image_tag r.avatar, class: "room_image" %>
+            <% end %>
         </td>
         <td>
           <%= r.room_id %>
@@ -35,6 +36,9 @@
         </td>
         <td>
           <%= r.charge %>
+        </td>
+        <td>
+          <%= r.created_at.to_s(:datetime_jp) %>
         </td>
         <td>
           <%= r.start_date.to_s(:datetime_jp) %>

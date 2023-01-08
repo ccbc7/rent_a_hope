@@ -13,9 +13,4 @@ class Room < ApplicationRecord
     end
 
 
-    # with_options on: :confirm do
-    validates :people,  presence: true
-    validates :start_date,  presence: true
-    # end
-
 end

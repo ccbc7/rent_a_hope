@@ -21,7 +21,6 @@ class HomeController < ApplicationController
     @results = @q.result
     @room = Room.find(params[:id])
     @reservation = Reservation.new #(room_params)いる？
-    # binding.pry
   end
 
   def edit
