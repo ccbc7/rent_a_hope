@@ -5,9 +5,12 @@
     <div class="profile_img">
       <% if @user.avatar.attached? %>
       <%= image_tag @user.avatar.variant(resize: '300x300'), class:"one" %>
-        <% end %>
+      <% else %>
+        <image src="/assets/default-avatar" class="one" alt="ユーザーアイコン"><!-- デフォルト画像表示用 -->
+          <% end %>
     </div>
 
+    <div class="users_show_table">
     <table>
         <tr>
           <th>ユーザーネーム</th>
@@ -26,7 +29,7 @@
           <td><%= @user.introduction %></td>
         </tr>
       </table>
-      </div>
+    </div>
         <div class="link">
           <p>
             <%= link_to "プロフィールを編集する" , edit_user_path %>
@@ -34,8 +37,4 @@
           <p>
             <%= link_to "アカウントを編集する" , "/users/edit" %>
           </p>
-
-
-
-  </div>
-</div>
+        </div>

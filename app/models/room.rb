@@ -9,8 +9,7 @@ class Room < ApplicationRecord
     validates :room_name,  presence: true
     validates :address,  presence: true
     validates :charge,  presence: true
-    validates :avatar,  presence: true
+    # validates :avatar,  presence: true #デフォルト画像表示のため
     end
-
 
 end

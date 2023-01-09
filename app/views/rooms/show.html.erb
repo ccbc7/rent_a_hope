@@ -48,7 +48,9 @@
       <td>
         <% if @room.avatar? %>
           <%= image_tag @room.avatar.url,class: "room_image" %>
-            <% end %>
+        <% else %>
+          <image src="/assets/default_room_image" class="room_image" alt="デフォルトルームイメージ"><!-- デフォルト画像表示用 -->
+        <% end %>
       </td>
     </tr>
 

@@ -23,7 +23,9 @@
         <td>
           <% if r.avatar? %>
             <%= image_tag r.avatar.url,class: "room_image" %>
-              <% end %>
+          <% else %>
+            <image src="/assets/default_room_image" class="room_image" alt="デフォルトルームイメージ"><!-- デフォルト画像表示用 -->
+          <% end %>
         </td>
         <td>
           <%=link_to r.room_name, room_path(r) %>

@@ -1,8 +1,14 @@
 <h1>予約確認画面</h1>
 <%= render "/shared/error" , obj: @reservation %>
-<% sub_price = @reservation.charge * @reservation.people %>
-<% total_day=((@reservation.end_date - @reservation.start_date)/3600/24).floor %>
-<% total_price=sub_price * total_day %>
+<% if @reservation.charge && @reservation.people && @reservation.start_date && @reservation.end_date %>
+  <% sub_price = @reservation.charge * @reservation.people %>
+  <% total_day=((@reservation.end_date - @reservation.start_date)/3600/24).floor %>
+  <% total_price=sub_price * total_day %>
+    <% if total_day = 0 %>
+      <% total_price=sub_price * 1 %>
+    <% end %>
+<% end %>
+<!-- 宿泊日数が０日の場合でも、１日分の料金がかかるように計算 -->
 
 <div class="confirm_th">
   <table>
@@ -47,13 +53,13 @@
     <tr>
       <th>チェックイン日:</th>
       <td>
-        <%= @reservation.start_date.to_s(:datetime_jp) %>
+        <%= params[:start_date] %>
       </td>
     </tr>
     <tr>
       <th>チェックアウト日:</th>
       <td>
-        <%= @reservation.end_date.to_s(:datetime_jp) %>
+        <%= params[:end_date] %>
       </td>
     </tr>
     <tr>
