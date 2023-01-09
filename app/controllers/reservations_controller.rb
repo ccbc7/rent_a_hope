@@ -37,6 +37,9 @@ class ReservationsController < ApplicationController
     @user = current_user
     @reservation = Reservation.new(confirm_params)
     @room = Room.find(params[:id])
+    sub_price = @reservation.charge * @reservation.people
+    total_day = ((@reservation.end_date - @reservation.start_date)/3600/24+1).floor
+    total_price = sub_price * total_day
   end
 
   private

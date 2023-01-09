@@ -6,6 +6,28 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    model:
+      room: ルーム
+      reservation: 予約
+    attributes:
+      room:
+        room_name: ルームネーム
+        address: 住所
+        charge: 料金
+        room_introduction: ルーム紹介
+        start_date: 開始日
+        end_date: 終了日
+        people: 人数
+        avatar: 写真
+      reservation:
+        room_name: ルームネーム
+        address: 住所
+        charge: 料金
+        room_introduction: ルーム紹介
+        start_date: 開始日
+        end_date: 終了日
+        people: 人数
+        avatar: 写真
   date:
     abbr_day_names:
     - 日
@@ -178,4 +200,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-

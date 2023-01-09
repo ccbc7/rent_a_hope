@@ -1,4 +1,4 @@
-<h3>検索結果</h3>
+<h3>検索結果：<%= @results.count(:id) %>件</h3>
 <table>
   <thead>
     <tr>
@@ -6,7 +6,7 @@
       <th>ルーム画像</th>
       <th>ルームネーム</th>
       <th>場所</th>
-      <th>ルーム紹介</th>
+      <th>施設詳細</th>
       <th>料金</th>
       <th>登録者ID</th>
       <th>予約</th>
@@ -32,7 +32,7 @@
           <%= r.address %>
         </td>
         <td>
-          <%= r.room_introduction %>
+          <%= link_to "ルーム詳細" , room_path(r) %>
         </td>
         <td>
           <%= r.charge %>円/日
