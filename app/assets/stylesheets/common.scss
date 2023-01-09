@@ -277,11 +277,17 @@ img.confirm_room_image {
   background-color: antiquewhite;
 }
 
+.reserved_rooms table,th {
+  border-collapse: collapse;
+  border: 1px, black solid;
+}
+
 table,
 th,
 td {
   border-collapse: collapse;
   border-bottom: 1px #000000 solid;
+  padding: 2px;
 }
 
 
@@ -373,4 +379,8 @@ td {
 
 .confirm_th th {
   text-align: right;
+}
+
+.room_introduction {
+  max-width: 100px;
 }

@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = "#{@reservation.room_name}の予約に成功しました"
       redirect_to reserved_rooms_reservations_path
     end
+    binding.pry
   end
 
 
@@ -44,9 +45,9 @@ class ReservationsController < ApplicationController
 
   private
   def confirm_params
-  params.permit(:user_id, :room_id, :room_name, :charge, :start_date, :end_date, :people, :avatar, :current_user_id, :id)#時間の計算をするために必要
+  params.permit(:user_id, :room_id, :room_name, :charge, :start_date, :end_date, :people, :avatar, :current_user_id, :id, :room_introduction)#時間の計算をするために必要
   end
   def reservation_params
-  params.require(:reservation).permit(:user_id, :room_id, :room_name, :charge, :start_date, :end_date, :people, :avatar)
+  params.require(:reservation).permit(:user_id, :room_id, :room_name, :charge, :start_date, :end_date, :people, :avatar, :room_introduction)
   end
 end
