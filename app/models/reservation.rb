@@ -21,8 +21,7 @@ class Reservation < ApplicationRecord
   validate :start_end_check #予約日日付逆転禁止
   def start_end_check
     if
-    self.start_date && self.end_date &&
-    self.start_date < self.end_date
+    self.start_date > self.end_date
     errors.add(:end_date, "は開始日より前の日付は登録できません。")
     end
   end
