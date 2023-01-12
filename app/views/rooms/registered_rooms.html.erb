@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>id</th>
+      <th>作成日</th>
       <th>ルーム画像</th>
       <th>ルームネーム</th>
       <th>場所</th>
@@ -19,6 +20,9 @@
       <tr>
         <td>
           <%= r.id %>
+        </td>
+        <td>
+          <%= r.created_at.to_s(:datetime_jp) %>
         </td>
         <td>
           <% if r.avatar? %>

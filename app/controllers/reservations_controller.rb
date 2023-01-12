@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @user = current_user
-    if !@reservation.valid? && !@reservation.save
+    if !@reservation.save
       @room = @reservation.room
       render :confirm
     elsif
@@ -37,6 +37,10 @@ class ReservationsController < ApplicationController
     @user = current_user
     @reservation = Reservation.new(confirm_params)
     @room = Room.find(params[:id])
+    if !@reservation.valid?(:show_to_confirm)
+      @regist_user = User.find(@room.user_id)#ルーム登録時に紐づけた登録者のuser_idからユーザー名を検索
+      render "rooms/show"
+    end
   end
 
   private

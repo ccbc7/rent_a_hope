@@ -1,5 +1,6 @@
 <h3>予約済みルーム</h3>
 <div class="reserved_rooms">
+
 <table>
   <thead>
     <tr>
@@ -43,16 +44,21 @@
           <%= r.created_at.to_s(:datetime_jp_reserve) %>
         </td>
         <td>
-          <%= r.start_date.to_s(:datetime_jp) %>
+          <%= r.start_date.to_s(:datetime_jp)%>
         </td>
         <td>
           <%= r.end_date.to_s(:datetime_jp) %>
         </td>
         <td>
-          <% sub_price=r.charge * r.people %>
-            <% total_day=((r.end_date - r.start_date)/3600/24+1).floor %>
-              <% total_price=sub_price * total_day %>
-                <%= total_price %>円
+        <% if r.charge && r.people && r.start_date && r.end_date %>
+          <% sub_price= r.charge * r.people %>
+            <% total_day=((r.end_date - r.start_date)/3600/24).floor %>
+            <% total_price=sub_price * total_day %>
+            <% if total_day = 0 %>
+              <% total_price = r.charge %>
+              <%= total_price %>円
+            <% end %>
+        <% end %>
         </td>
         <td>
           <%= r.user_id %>
