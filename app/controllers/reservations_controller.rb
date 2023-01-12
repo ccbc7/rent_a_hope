@@ -20,7 +20,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-
   def reserved_rooms
     @user = current_user
     @reservations =  Reservation.where(user_id: current_user.id)

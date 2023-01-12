@@ -6,6 +6,7 @@
       <th>ルーム画像</th>
       <th>ルームネーム</th>
       <th>場所</th>
+      <th>ルーム紹介</th>
       <th>施設詳細</th>
       <th>料金</th>
       <th>登録者ID</th>
@@ -32,6 +33,9 @@
         </td>
         <td>
           <%= r.address %>
+        </td>
+        <td>
+          <%= r.room_introduction %>
         </td>
         <td>
           <%= link_to "ルーム詳細" , room_path(r) %>

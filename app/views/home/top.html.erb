@@ -6,6 +6,7 @@
   </div>
 </div>
 
+
 <div class="over_city_container">
     <h1 class="osusume_area">おすすめエリア</h1>
   <div class="outer_city_container" >
@@ -38,7 +39,7 @@
 <div class="all_search_box">
   <%= search_form_for @q, url: search_home_index_path do |f| %>
     <div class="search-outer-box">
-      <%= f.search_field :room_name_or_address_cont, class: "search-box" , placeholder:"東京" %>
+      <%= f.search_field :room_name_or_address_or_charge_or_room_introduction_cont, class: "search-box" , placeholder:"エリア名を入力" %>
         <%= f.submit "検索" , class: "search-submit" %>
     </div>
     <% end %>

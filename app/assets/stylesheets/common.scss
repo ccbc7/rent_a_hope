@@ -237,14 +237,16 @@ img.confirm_room_image {
 }
 
 .search-outer-box {
-  position: relative;
-  top: -100px;
+  position: absolute;
+  top: -570px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   .search-box {
     background-color: white;
     border-radius: 3px;
     width: 400px;
     height: 30px;
-    opacity: 60%;
+    opacity: 70%;
   }
 }
 .search-submit {
@@ -264,7 +266,7 @@ img.confirm_room_image {
   border-radius: 3px;
   width: 400px;
   height: 30px;
-  opacity: 60%;
+  opacity: 40%;
 }
 
 .edit-room-introduction th {
@@ -372,7 +374,11 @@ td {
 }
 
 .all_search_box {
+  z-index: 200;
   position: relative;
+    left: 0;
+    right: 0;
+  margin: auto;
   text-align: center;
   top: -250px;
 }
