@@ -244,7 +244,7 @@ img.confirm_room_image {
   .search-box {
     background-color: white;
     border-radius: 3px;
-    width: 400px;
+    width: 200px;
     height: 30px;
     opacity: 70%;
   }
@@ -261,13 +261,7 @@ img.confirm_room_image {
   border-radius: 3px;
 }
 
-.search-box {
-  background-color: white;
-  border-radius: 3px;
-  width: 400px;
-  height: 30px;
-  opacity: 40%;
-}
+
 
 .edit-room-introduction th {
   max-width: 500px;
@@ -393,4 +387,18 @@ td {
 
 .users_show_table th {
   text-align: right;
+}
+
+@media (min-width:0px)and(max-width:899px) {
+.search-outer-box{
+  position: absolute;
+  top: -550px;
+}
+}
+@media (min-width:1104px) {
+.search-outer-box {
+  position: relative;
+  text-align: center;
+  top: -130px;
+}
 }

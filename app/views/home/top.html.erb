@@ -39,7 +39,8 @@
 <div class="all_search_box">
   <%= search_form_for @q, url: search_home_index_path do |f| %>
     <div class="search-outer-box">
-      <%= f.search_field :room_name_or_address_or_charge_or_room_introduction_cont, class: "search-box" , placeholder:"エリア名を入力" %>
+      <%= f.search_field :address_cont, class: "search-box" , placeholder:"場所検索  （例）東京" %>
+      <%= f.search_field :room_name_or_room_introduction_cont, class: "search-box" , placeholder:"ルームネーム・ルーム紹介" %>
         <%= f.submit "検索" , class: "search-submit" %>
     </div>
     <% end %>
