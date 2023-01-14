@@ -1,0 +1,73 @@
+<h3>予約済みルーム</h3>
+<div class="reserved_rooms">
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ルーム画像</th>
+      <th>ルームID</th>
+      <th>ルームネーム</th>
+      <th>ルーム紹介</th>
+      <th>予約確定日時</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>支払い料金</th>
+      <th>予約者ID</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |r| %>
+      <tr>
+        <td>
+          <%= link_to r.id, room_path(r.room_id) %>
+        </td>
+        <td>
+          <% if r.avatar? %>
+              <%= image_tag r.avatar, class: "room_image" %>
+          <% else %>
+            <image src="/assets/default_room_image" class="room_image" alt="デフォルトルームイメージ"><!-- デフォルト画像表示用 -->
+          <% end %>
+        </td>
+        <td>
+          <%= r.room_id %>
+        </td>
+        <td>
+          <%= r.room_name %>
+        </td>
+        <td class="room_introduction">
+          <%= r.room_introduction %>
+        </td>
+        <td>
+          <%= r.created_at.to_s(:datetime_jp_reserve) %>
+        </td>
+        <td>
+          <%= r.start_date.to_s(:datetime_jp)%>
+        </td>
+        <td>
+          <%= r.end_date.to_s(:datetime_jp) %>
+        </td>
+        <td>
+        <% if r.charge && r.people && r.start_date && r.end_date %>
+          <% sub_price= r.charge * r.people %>
+            <% total_day=((r.end_date - r.start_date)/3600/24).floor %>
+            <% total_price=sub_price * total_day %>
+            <% if total_day = 0 %>
+              <% total_price = r.charge %>
+              <%= total_price %>円
+            <% end %>
+        <% end %>
+        </td>
+        <td>
+          <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>

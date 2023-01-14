@@ -1,0 +1,58 @@
+<h3>検索結果：<%= @results.count(:id) %>件</h3>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>ルーム画像</th>
+      <th>ルームネーム</th>
+      <th>場所</th>
+      <th>ルーム紹介</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+      <th>登録者ID</th>
+      <th>予約</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |r| %>
+      <tr>
+        <td>
+          <%= r.id %>
+        </td>
+        <td>
+          <% if r.avatar? %>
+            <%= image_tag r.avatar.url,class: "room_image" %>
+          <% else %>
+        <image src="/assets/default_room_image" class="room_image" alt="ユーザーアイコン"><!-- デフォルト画像表示用 -->
+          <% end %>
+        </td>
+        <td>
+          <%= r.room_name %>
+        </td>
+        <td>
+          <%= r.address %>
+        </td>
+        <td>
+          <%= r.room_introduction %>
+        </td>
+        <td>
+          <%= link_to "ルーム詳細" , room_path(r) %>
+        </td>
+        <td>
+          <%= r.charge %>円/日
+        </td>
+        <td>
+          <%= r.user_id %>
+        </td>
+        <td>
+          <%= link_to "予約する" , room_path(r) %>
+        </td>
+        <td>
+          <%= link_to "削除" , r, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,35 @@
+
+<header>
+  <div class="header-logo">
+    <a href="/">レンタルーム</a>
+  </div>
+  <ul class="header-menus">
+    <!-- <li><a>レンタルームとは</a></li> -->
+    <li>
+      <a>
+    <li><img src="ziro.jpg" class="ziro">
+      <ul class="sub-list">
+        <li class="sub">ルーム予約</li><br>
+        <li class="sub">予約済みルーム一覧</li><br>
+        <li class="sub">登録済みルーム一覧</li><br>
+        <li class="sub">
+          <%= link_to "アカウント情報" , "/users/edit" %>
+        </li><br>
+        <li class="sub">
+          <%= link_to "ログアウト" , "/users/sign_out" , method: :delete %>
+        </li><br>
+      </ul>
+    </li>
+    </a>
+    </li>
+    <li><a>
+        <%= link_to "新規登録" , "/users/sign_up" %>
+      </a></li>
+    <li>
+      <a>
+        <%= link_to "ログイン" , "/users/sign_in" %>
+      </a>
+    </li>
+  </ul>
+  <p></p>
+</header>

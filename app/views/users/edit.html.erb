@@ -1,0 +1,50 @@
+
+<%= form_with model: current_user do |f| %>
+<div class="box">
+  <div class="box-inner">
+    <h2>プロフィール</h2>
+    <table>
+      <tr>
+        <th>ユーザーネーム</th>
+        <div class="field">
+          <td>
+              <div class="box-email">
+                <%= f.text_field :username %>
+              </div>
+          </td>
+        </div>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <div class="field">
+          <th>
+            <div class="box-introduction">
+            <%= f.text_area :introduction%>
+            </div>
+            </th>
+        </div>
+      </tr>
+      <tr>
+        <th>アイコン画像</th>
+        <th>
+          <%= f.file_field :avatar %>
+        </th>
+      </tr>
+    </table><br>
+    <p>
+      <div class="box-login">
+        <%= f.submit "更新" %>
+      </div>
+    </p>
+    <% end %>
+    <div class="link">
+
+      <p>
+        <%= link_to "アカウントを編集する" , "/users/edit" %>
+      </p>
+      <p>
+        <%= link_to "もどる" , "/" %>
+      </p>
+    </div>
+  </div>
+</div>

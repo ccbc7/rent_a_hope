@@ -1,0 +1,24 @@
+<h3 class="result">検索結果：<%= @results.count(:id) %>件</h3>
+<div class="outer_box">
+  <% @results.each do |r| %>
+  <%= link_to  home_path(r.id) do %><!-- home#showアクションへ -->
+      <div class="sample_box">
+        <% if r.room_image.attached? %>
+            <%= image_tag r.room_image , class:"index_room_image"%>
+        <% end %>
+        <li class="room_name">
+          <%= r.room_name %>
+        </li>
+        <li class="address">
+          <%= r.adress %>
+        </li>
+        <li class="charge">
+          ¥<%= r.charge %>
+        </li>
+        <li class="ID">
+          [roomID]<%= r.id %>
+        </li>
+      </div>
+  <% end %>
+<% end %>
+    </div>

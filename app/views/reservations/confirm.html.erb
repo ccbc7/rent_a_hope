@@ -1,0 +1,105 @@
+<h1>予約確認画面</h1>
+<%= render "/shared/error" , obj: @reservation %>
+<% if @reservation.charge && @reservation.people && @reservation.start_date && @reservation.end_date %>
+  <% sub_price = @reservation.charge * @reservation.people %>
+  <% total_day=((@reservation.end_date - @reservation.start_date)/3600/24).floor %>
+  <% total_price=sub_price * total_day %>
+<% end %>
+<!-- 宿泊日数が０日の場合でも、１日分の料金がかかるように計算 -->
+
+<div class="confirm_th">
+  <table>
+    <tr>
+      <th>今日の日付:</th>
+      <td><%= Date.current %></td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th>ルーム画像:</th>
+      <td>
+        <% if @reservation.avatar? %>
+          <%= image_tag @reservation.avatar, class: "room_image" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>予約者ID:</th>
+      <td>
+        <%= current_user.id %>
+      </td>
+    </tr>
+    <tr>
+      <th>予約者名:</th>
+      <td>
+        <%= current_user.username %>
+      </td>
+    </tr>
+    <tr>
+      <th>ルームネーム:</th>
+      <td>
+        <%= @room.room_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>料金:</th>
+      <td>
+        <%= @room.charge %>円
+      </td>
+    </tr>
+    <tr>
+      <th>チェックイン日:</th>
+      <td>
+        <%= @reservation.start_date.to_s(:datetime_jp) %>
+      </td>
+    </tr>
+    <tr>
+      <th>チェックアウト日:</th>
+      <td>
+        <%= @reservation.end_date.to_s(:datetime_jp) %>
+      </td>
+    </tr>
+    <tr>
+      <th>宿泊日数:</th>
+      <td>
+        <%= total_day %>日
+      </td>
+    </tr>
+    <tr>
+      <th>人数:</th>
+      <td>
+        <%= params[:people] %>人
+      </td>
+    </tr>
+    <tr>
+      <th>支払い料金:</th>
+      <td>
+        <% if @reservation.charge && @reservation.people &&  @reservation.start_date && @reservation.end_date %>
+            <!-- <%= total_price %>円 -->
+            <% if total_day = 0 %>
+              <% total_price = @reservation.charge %>
+              <%= total_price %>円
+            <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+  <%= form_with model: @reservation, local: true do |f| %>
+    <%= f.hidden_field :user_id, :value=> current_user.id %>
+    <%= f.hidden_field :room_id, :value=> @room.id %>
+    <%= f.hidden_field :room_name, :value=> @room.room_name %>
+    <%= f.hidden_field :charge, :value=> @room.charge %>
+    <%= f.hidden_field :start_date, :value=> @reservation.start_date %>
+    <%= f.hidden_field :end_date, :value=> @reservation.end_date %>
+    <%= f.hidden_field :people, :value=> params[:people] %>
+    <%= f.hidden_field :avatar, :value=> @room.avatar %>
+    <%= f.hidden_field :room_introduction, value: @room.room_introduction %>
+
+    <button><%= f.submit "確定する" %></button>
+    <% end %>
+
+    <button>
+    <%= link_to "入力画面に戻る", room_path(@room.id) %>
+  </button>

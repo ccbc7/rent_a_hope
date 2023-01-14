@@ -1,0 +1,119 @@
+<h3>施設詳細&ルーム予約ページ</h3>
+<%= render "/shared/error" , obj: @reservation %>
+<h4>この部屋を予約しようとしているユーザー</h4>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>
+      <%= current_user.id %>
+    </td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td>
+      <%= current_user.username %>
+    </td>
+  </tr>
+</table>
+-----------------------------------------------------------------
+<%= form_with url: confirm_reservation_path do |f| %>
+  <table>
+    <tr>
+      <th>
+        <%= f.label :user_id ,"投稿者ID" %>
+      </th>
+      <td>
+        <%= @room.user_id %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :user_name ,"投稿者名" %>
+      </th>
+      <td>
+        <%= @regist_user.username %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :user_id ,"ルームID" %>
+      </th>
+      <td>
+        <%= @room.id %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :user_name ,"ルーム画像" %>
+      </th>
+      <td>
+        <% if @room.avatar? %>
+          <%= image_tag @room.avatar.url,class: "room_image" %>
+        <% else %>
+          <image src="/assets/default_room_image" class="room_image" alt="デフォルトルームイメージ"><!-- デフォルト画像表示用 -->
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        <%= f.label :room_name ,"ルームネーム" %>
+      </th>
+      <td>
+        <%=  @room.room_name %>
+          <!-- ビューに表示されるが編集不可 -->
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :room_introduction ,"ルーム紹介" %>
+      </th>
+      <td>
+        <%=  @room.room_introduction %>
+          <!-- ビューに表示されるが編集不可 -->
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :charge ,"料金" %>
+      </th>
+      <td>
+        <%= @room.charge %>円/日
+          <!-- ビューに表示されるが編集不可 -->
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :start_date ,"チェックイン" %>
+      </th>
+      <td>
+        <%= f.date_field :start_date %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :end_date ,"チェックアウト" %>
+      </th>
+      <td>
+        <%= f.date_field :end_date %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :people ,"人数" %>
+      </th>
+      <td>
+        <%= f.number_field :people %>
+      </td>
+    </tr>
+  </table>
+      <button><%= f.submit "確認画面へ" %></button>
+      <%= f.hidden_field :charge, value: @room.charge %>
+      <%= f.hidden_field :room_name, value: @room.room_name %>
+      <%= f.hidden_field :avatar, value: @room.avatar%>
+      <%= f.hidden_field :room_introduction, value: @room.room_introduction %>
+<% end %>
+
+    <button>
+      <%= link_to "入力画面に戻る" , rooms_path %>
+    </button>
