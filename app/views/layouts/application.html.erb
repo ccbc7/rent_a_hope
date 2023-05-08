@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RentAHope</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RentARoom</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"><!-- レスポンシブデザイン用メタタグ -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,56 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+        <a href="/">レンタルーム</a>
+      </div>
+      <ul class="header-menus">
+        <!-- <li><a>レンタルームとは</a></li> -->
+        <% if user_signed_in? %>
+          <li>
+            <div class="search-outer-box2">
+          <li>
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar.variant(resize: '100x100' ), class: "ziro" %>
+            <% else %>
+              <image src="/assets/default-avatar" class="ziro" alt="ユーザーアイコン"><!-- デフォルト画像表示用 -->
+            <% end %>
+                <a href="/users/:id">
+                  <li class="sub">ようこそ！<%= @user.username%>さん <br>
+                </a>
+
+            <ul class="sub-list">
+              <li class="sub"><%= link_to "ルーム登録",new_room_path %></li><br>
+              <li><%= link_to "ルーム予約", rooms_path %></li>
+              <li class="sub"><%= link_to "予約済みルーム一覧" , reserved_rooms_reservations_path %></li><br>
+              <li class="sub"><%= link_to "登録済みルーム一覧", registered_rooms_rooms_path %></li><br>
+              <li><%= link_to "ユーザー情報", "/users/:id"%></li>
+              <li><%= link_to "ログアウト" , "/users/sign_out" , method: :delete %></li>
+            </ul>
+          </li>
+          <li>
+          </li>
+
+        <% else %>
+          <li class="sub">
+            <li><a><%= link_to "新規登録" , "/users/sign_up" %></a></li>
+            <li><a><%= link_to "ログイン" , "/users/sign_in" %></a></li>
+          </li>
+        <% end %>
+      </ul>
+
+    </header>
+    <div class="message">
+      <p class="notice">
+        <%= notice %>
+      </p>
+      <p class="alert">
+        <%= alert %>
+      </p>
+    </div>
+
     <%= yield %>
+
   </body>
 </html>
